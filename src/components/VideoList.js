@@ -6,7 +6,7 @@ const VideoList = ({videos}) => {
     return <VideoItem video={video}/>
   })
   
-  return <div>
+  return <div className="ui relaced divided list">
     {renderedList}
   </div>
 }

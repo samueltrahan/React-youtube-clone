@@ -1,7 +1,16 @@
-import React from 'react';
+import React from "react";
 
-const VideoDetail = ({video}) => {
-  return <div>{video.snippet.title}</div>
-}
+const VideoDetail = ({ video }) => {
+  if (!video) {
+    return <div>Loading...</div>;
+  }
 
-export default VideoDetail
+  return (
+    <div className="ui segment">
+      <h4 className="ui header">{video.snippet.title}</h4>
+      <p>{video.snippet.description}</p>
+    </div>
+  );
+};
+
+export default VideoDetail;

@@ -1,5 +1,5 @@
 import axios from 'axios'
-const KEY = 'AIzaSyB6SQk5JhQ-n5iwZ2gJE4tOT5d9O86UDGM'
+const KEY = process.env.REACT_APP_API_KEY
 
 
 

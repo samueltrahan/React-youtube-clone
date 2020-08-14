@@ -4,7 +4,7 @@ import youtube from "../apis/youtube";
 import VideoList from "./VideoList";
 import VideoDetail from "./VideoDetail";
 
-const KEY = process.env.REACT_APP_API_KEY;
+//const KEY = process.env.REACT_APP_API_KEY;
 
 class App extends React.Component {
   state = { videos: [], selectedVideo: null };
@@ -12,19 +12,22 @@ class App extends React.Component {
   onTermSubmit = async (term) => {
     const response = await youtube.get("/search", {
       params: {
-        part: "snippet",
-        type: "video",
-        maxResults: 5,
-        key: KEY,
         q: term,
       },
     });
-    this.setState({ videos: response.data.items });
+    this.setState({
+      videos: response.data.items,
+      selectedVideo: response.data.items[0],
+    });
   };
 
   onVideoSelect = (video) => {
     this.setState({ selectedVideo: video });
   };
+
+  componentDidMount() {
+    this.onTermSubmit("Greatest LSU football moments");
+  }
 
   render() {
     return (
